@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html 	xmlns="http://www.w3.org/1999/xhtml"
+		xmlns:th="http://www.thymeleaf.org"
+		xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head th:replace="layout/plantilla :: head">
+	<title>Show Details</title>
+</head>
+<body>
+<header th:replace="layout/plantilla :: header"></header>
+<section  class="gradient-custom">
+	<br><br><br><br>
+	<div class="container vh-100">
+    	<div class="row align-items-center justify-content-center">
+			<h4 class="text-white">Movie: <span class="text-white"th:text="${pelicula.titulo}"></span></h4>
+			<form class="text-center" th:object="${comentario}" method="post" th:action="@{/comentarios/edit/} +${comentario.idComentario}+'/'+${comentario.pelicula.idPelicula}">
+				<div class="input-group">
+					<input  th:field="*{texto}" class="form-control" type="text" placeholder="write a comment" required autofocus="autofocus"/>
+					<span class="input-group-btn">
+						<button class="btn btn-success btn-lg" type="submit">Edit Comment</button>
+					</span>
+				</div>	
+			</form>
+			<div class="row mb-4 form-input">
+				<a th:href="@{/peliculas/show-detaills/} +${pelicula.idPelicula}" class="btn btn-info col-sm-1">< Back</a>
+			</div>
+		</div>
+	</div>
+<footer th:replace="layout/plantilla :: footer" ></footer>
+</section>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>	
+</body>
+</html>
